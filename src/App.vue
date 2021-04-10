@@ -1,26 +1,39 @@
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="header">
+    <h1>WAVEVO</h1>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Fun</a></li>
+    </ul>
+  </div>
+
+  <div class="photogrid">
+    <div v-for="i in col_count" :key="i">
+      <p>Photo-{{ i }}</p>
+    </div>
+    <button v-on:click="loadMore()">Load More</button>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+<script>
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data: function () {
+    return {
+      col_count: 10,
+    };
+  },
+  methods: {
+    loadMore() {
+      this.col_count += 10;
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@use '@/scss/main.scss';
 </style>
